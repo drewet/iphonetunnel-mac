@@ -2,7 +2,7 @@
 //  Controller.m
 //  iPhoneTunnel
 //
-//  Created by ito on 平成 20/09/22.
+//  Created by ito novi.mad@gmail.com on 平成 20/09/22.
 //	Updated by phonique@gmail.com on 12/12/2009
 
 #import "Controller.h"
@@ -136,7 +136,7 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 {
 	[_connections setTitle:NSLocalizedString(@"Connections: -", nil)];
 	
-	[self mobileDeviceRun:self];
+	//[self mobileDeviceRun:self];
 	//[NSThread detachNewThreadSelector:@selector(mobileDeviceRun:) toTarget:self withObject:nil];
 }
 
@@ -158,7 +158,7 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	
 	sharedController = self;
 	_devices = [[NSMutableArray alloc] init];
-	[self refreshDeviceMenuItem];
+	//[self refreshDeviceMenuItem];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -329,7 +329,8 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 		[self stop:nil];
 	} else {
 		// turn on
-		[self kill];
+		//[self kill];
+		[_tunnelTask stopProcess];
 		
 		if ([_logging state] == NSOnState) {
 			[self runInTerminal:self];
@@ -352,7 +353,7 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	[_barView setImageAnimation:YES];
 	
 	[_tunnelOnOff setTitle:NSLocalizedString(@"Turn off tunnel", nil)];
-	
+	/*
 	//[self kill];
 	NSDictionary* env = [NSDictionary dictionaryWithObjectsAndKeys:@"./md_hook.dylib", @"DYLD_INSERT_LIBRARIES", @"YES", @"DYLD_FORCE_FLAT_NAMESPACE", nil];
 	NSString* tunnelExec = [[NSBundle mainBundle] pathForResource:@"itnl" ofType:nil];
@@ -366,9 +367,28 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	//NSLog(@"args: %@", [args description]);
 	_tunnelTask = [[TaskWrapper alloc] initWithController:self arguments:args];
 	[_tunnelTask setEnvironment:env];
+	 
+	 */
 	
 	
-	[_tunnelTask startProcessWaitUntilExit:NO];
+	//NSDictionary* env = [NSDictionary dictionaryWithObjectsAndKeys:@"./md_hook.dylib", @"DYLD_INSERT_LIBRARIES", @"YES", @"DYLD_FORCE_FLAT_NAMESPACE", nil];
+	//NSString* tunnelExec = [[NSBundle mainBundle] pathForResource:@"itnl" ofType:nil];
+	[_tunnelTask release];
+	NSArray* args = nil;
+	NSString* tcprelayPath = [[NSBundle mainBundle] pathForResource:@"tcprelay" ofType:@"py"];
+	NSString* pythonPath = @"/usr/bin/python";
+	NSString* tcprelayArgs = [NSString stringWithFormat:@"%d:%d", [_devicePort intValue], [_localPort intValue]];
+	
+	if (_currentDevice) {
+		args = [NSArray arrayWithObjects:pythonPath, tcprelayPath, @"-t", tcprelayArgs, nil];
+	} else {
+		args = [NSArray arrayWithObjects:pythonPath, tcprelayPath, @"-t", tcprelayArgs, nil];
+	}
+	//NSLog(@"args: %@", [args description]);
+	_tunnelTask = [[TaskWrapper alloc] initWithController:self arguments:args];
+	//[_tunnelTask setEnvironment:env];
+	
+	[_tunnelTask startProcessWaitUntilExit:NO useStdout:YES];
 
 }
 
@@ -391,7 +411,7 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	//phonique python mod
 	NSString* tunnelExec = [[NSBundle mainBundle] pathForResource:@"tcprelay.py" ofType:nil];
 	NSString* scriptBase = @"tell application \"Terminal\"\n\
-	do script (\"cd \\\"%@\\\"\\npython tcprelay.py -t %@:%@ &\")\n\
+	do script (\"cd \\\"%@\\\"\\npython tcprelay.py -t %@:%@\")\n\
 	end tell";
 	
 	NSString* script;
@@ -416,17 +436,16 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	[_tunnelTask stopProcess];
 }
 
+/*
 - (void)kill
 {
 	
 	//TaskWrapper* killall = [[TaskWrapper alloc] initWithController:nil arguments:[NSArray arrayWithObjects:@"/usr/bin/killall", @"-INT", @"itnl", nil]];
-	//phonique python mod
-	TaskWrapper* killall = [[TaskWrapper alloc] initWithController:nil arguments:[NSArray arrayWithObjects:@"/usr/bin/killall", @"-INT", @"tcprelay.py", nil]];
-	[killall startProcessWaitUntilExit:YES];
-	[killall release];
+	//[killall startProcessWaitUntilExit:YES];
+	//[killall release];
 }
 
-
+*/
 
 #pragma mark TaskWrapper delegate
 

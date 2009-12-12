@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>10.6</string>
 	<key>CFBundleVersion</key>
-	<string>2.3a PE</string>
+	<string>2.3</string>
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSMainNibFile</key>

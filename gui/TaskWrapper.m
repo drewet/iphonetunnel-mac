@@ -161,7 +161,10 @@
 
     // launch the task asynchronously
 	[task launch];
-    if (exit) {
+	
+	NSLog(@"pid=%d", [task processIdentifier]);
+	
+	if (exit) {
 		[task waitUntilExit];
 	}  
 }
