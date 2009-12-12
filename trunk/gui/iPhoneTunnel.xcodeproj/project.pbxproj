@@ -59,7 +59,6 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* iPhoneTunnel_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneTunnel_Prefix.pch; sourceTree = "<group>"; };
-		5221ED1D0F540E57007FE5F1 /* itnl */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = itnl; path = ../itnl/build/Release/itnl; sourceTree = SOURCE_ROOT; };
 		5221ED4E0F540FDC007FE5F1 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		5225E6DD0E8BD0A300222A83 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		522C5A130E88D6BC001ED2FB /* right_arrow-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow-.png"; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		5272C6A70E877E8800DAA351 /* ITStatusBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITStatusBarView.h; sourceTree = "<group>"; };
 		5272C6A80E877E8F00DAA351 /* ITStatusBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITStatusBarView.m; sourceTree = "<group>"; };
 		5277146E0E8A6C2800B90458 /* defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaults.plist; sourceTree = "<group>"; };
-		52C363B60F1F5C5700338923 /* iphone_tunnel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = iphone_tunnel; path = ../itnl/iphone_tunnel; sourceTree = "<group>"; };
 		52C364550F1F6F3500338923 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		52D0E22D0E87B1A600F29EDE /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		52D0E22F0E87B21600F29EDE /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 		52D0E26D0E87C4D900F29EDE /* arrow_mask.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = arrow_mask.tif; sourceTree = "<group>"; };
 		52E966310E8A7F0200855471 /* TaskWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskWrapper.h; sourceTree = "<group>"; };
 		52E966320E8A7F0200855471 /* TaskWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskWrapper.m; sourceTree = "<group>"; };
-		52E966340E8A7F2E00855471 /* md_hook.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = md_hook.dylib; path = ../itnl/build/Release/md_hook.dylib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iPhoneTunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneTunnel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -174,12 +171,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5221ED1D0F540E57007FE5F1 /* itnl */,
 				523A41210F23554600DFB54F /* sshfs-static-leopard */,
 				52C364550F1F6F3500338923 /* dsa_pub.pem */,
 				5225E6DD0E8BD0A300222A83 /* Credits.rtf */,
-				52E966340E8A7F2E00855471 /* md_hook.dylib */,
-				52C363B60F1F5C5700338923 /* iphone_tunnel */,
 				5277146E0E8A6C2800B90458 /* defaults.plist */,
 				52D0E26D0E87C4D900F29EDE /* arrow_mask.tif */,
 				52D0E23E0E87B84B00F29EDE /* left_arrow_off.png */,
