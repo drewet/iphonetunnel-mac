@@ -48,7 +48,7 @@
 
 - (IBAction)run:(id)sender;
 - (IBAction)stop:(id)sender;
-- (void)kill;
+//- (void)kill;
 
 
 - (IBAction)openNetworkSettings:(id)sender;
