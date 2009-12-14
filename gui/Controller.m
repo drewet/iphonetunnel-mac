@@ -388,7 +388,8 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 	_tunnelTask = [[TaskWrapper alloc] initWithController:self arguments:args];
 	//[_tunnelTask setEnvironment:env];
 	
-	[_tunnelTask startProcessWaitUntilExit:NO useStdout:YES];
+	[_tunnelTask startProcessWaitUntilExit:NO useStdout:NO];
+//	[_tunnelTask startProcessWaitUntilExit:NO useStdout:YES];
 
 }
 
@@ -461,14 +462,14 @@ void mobileDeviceNotification(struct am_device_notification_callback_info* info)
 		_tunnelIsOn = YES;
 		[self toggleOnOff:self];
 		[_connections setTitle:NSLocalizedString(@"Connections: Bind Error", nil)];
-		[self kill];
+		//[self kill];
 		return;
 	}
 	if (hookErrorRange.location != NSNotFound) {
 		NSLog(@"HOOK ERROR");
 		_tunnelIsOn = YES;
 		[self toggleOnOff:self];
-		[self kill];
+	//	[self kill];
 		NSAlert *alert = [NSAlert alertWithMessageText: NSLocalizedString(@"Hook failure.", nil)
 										 defaultButton: NSLocalizedString(@"OK", nil) 
 									   alternateButton: nil
